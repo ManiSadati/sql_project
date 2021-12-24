@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="CostumerSignUp" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="SignUp Form" HorizontalAlignment="Left" Margin="97,25,0,0" VerticalAlignment="Top" Width="202" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="97,119,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="97,187,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="National ID:" HorizontalAlignment="Left" Margin="97,153,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="97,221,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="97,85,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="97,255,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="FirstNameCostumerSignup" HorizontalAlignment="Left" Margin="198,90,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="LastNameCostumerSignup" HorizontalAlignment="Left" Margin="198,124,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NIDCostumerSignup" HorizontalAlignment="Left" Margin="198,158,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="EmailCostumerSignup" HorizontalAlignment="Left" Margin="198,192,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PasswordCostumerSignup" HorizontalAlignment="Left" Margin="198,226,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="AddressCostumerSignup" HorizontalAlignment="Left" Margin="198,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="66"/>
+        <Button Content="Register" HorizontalAlignment="Left" Margin="198,350,0,0" VerticalAlignment="Top" Width="120" Height="27" Click="Button_Click"/>
+
     </Grid>
 </Window>

@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="CostumerSignIn" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Login" HorizontalAlignment="Left" Margin="97,25,0,0" VerticalAlignment="Top" Width="303" FontSize="20" FontWeight="Bold" Height="81"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="97,130,0,0" VerticalAlignment="Top" FontSize="14" Height="44" Width="58"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="97,186,0,0" VerticalAlignment="Top" FontSize="14" Height="45" Width="89"/>
+        <TextBox x:Name="EmailCostumerSignin" HorizontalAlignment="Left" Margin="173,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="151" Height="28"/>
+        <TextBox x:Name="PasswordCostumerSignin" HorizontalAlignment="Left" Margin="173,186,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="151" Height="28"/>
+        <Button x:Name="signinbtn" Content="Sign In" HorizontalAlignment="Left" Margin="173,244,0,0" VerticalAlignment="Top" Width="151" Height="31" Click="signinbtn_Click"/>
+
     </Grid>
 </Window>
