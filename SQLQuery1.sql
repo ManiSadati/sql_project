@@ -38,5 +38,13 @@ HP varchar(800) not null,
 Val varchar(800) not null,
 );
 
+CREATE TABLE customer
+(
+ID int identity(1,1) not null primary key,
+NationalID varchar(100) not null,
+Address varchar(800) not null,
+Name varchar(800) not null,
+Credit int not null
+);
 
 DROP TABLE SIGNUP;
