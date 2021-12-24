@@ -36,12 +36,23 @@ Nwin int not null,
 Val int not null,
 );
 
-
 CREATE TABLE doctor
 (
 ID int not null primary key,
 PID int not null,
 major varchar(800) not null,
+);
+
+
+CREATE TABLE Customer
+(
+ID int identity(1,1) not null primary key,
+Name varchar(800) not null,
+NID varchar(100) not null,
+email varchar(800) not null,
+password varchar(800) not null,
+Address varchar(800) not null,
+Credit int not null
 );
 
 
@@ -63,3 +74,4 @@ DROP TABLE coach;
 DROP TABLE doctor;
 
 DROP TABLE SIGNUP;
+
