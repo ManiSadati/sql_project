@@ -19,9 +19,15 @@ namespace WpfApp1
     /// </summary>
     public partial class CostumerHomePage : Window
     {
+        public Customer Custo { set; get; }
         public CostumerHomePage()
         {
             InitializeComponent();
+        }
+        public CostumerHomePage(Customer custo)
+        {
+            InitializeComponent();
+            this.Custo = custo;
         }
     }
 }
