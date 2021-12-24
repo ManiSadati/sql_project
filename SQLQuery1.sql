@@ -14,16 +14,18 @@ phone varchar(800) not null
 CREATE TABLE employee
 (
 ID int not null primary key,
-CID int foreign key,
+CID int not null,
 Ctype varchar(800) null,
 firstname varchar(800) not null,
-secondname varchar(800) not null,
+lastname varchar(800) not null,
 email varchar(800) not null,
 pass varchar(800) not null,
 phone varchar(800) not null,
 worktime int null,
 payment int null,
 );
+
+DROP TABLE employee;
 
 CREATE TABLE player
 (
