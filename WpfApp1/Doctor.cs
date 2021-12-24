@@ -8,29 +8,20 @@ using System.Data.SqlClient;
 
 namespace WpfApp1
 {
-    class player:employee
+    class Doctor:employee
     {
+
         public static new DBAccess dbaccess = new DBAccess();
         public int id { set; get; }
         public int pid { set; get; }
-        public int Ngame { set; get; }
-        public int Ngoal { set; get; }
-        public int Nwin { set; get; }
-        public int age { set; get; }
-        public int health { set; get; }
-        public int val { set; get; }
-        public player(int id, int cid, string Ctype, string firstName, string lastname, string email, string pass, string phone, int worktime,int payment, int Ngame,int Ngoal,int Nwin,int age,int health,int val):base(id,cid,Ctype,firstName,lastname,email,pass,phone,worktime,payment)
+        public string major { set; get; }
+        public Doctor(int id, int cid, string Ctype, string firstName, string lastname, string email, string pass, string phone, int worktime, int payment, string major) : base(id, cid, Ctype, firstName, lastname, email, pass, phone, worktime, payment)
         {
             this.id = cid;
             this.pid = id;
-            this.Ngame = Ngame;
-            this.Ngoal = Ngoal;
-            this.Nwin = Nwin;
-            this.age = age;
-            this.health = health;
-            this.val = val;
+            this.major = major;
         }
-        public player()
+        public Doctor()
         {
             this.firstname = "";
             this.lastname = "";
@@ -44,25 +35,15 @@ namespace WpfApp1
             this.phone = "";
             this.id = 0;
             this.pid = 0;
-            this.Ngame = 0;
-            this.Ngoal = 0;
-            this.Nwin = 0;
-            this.age = 0;
-            this.health = 0;
-            this.val = 0;
+            this.major = major;
         }
         public new void insert()
         {
             base.insert();
-            SqlCommand insert = new SqlCommand("insert into player(id,pid,Ngame,Ngoal,Nwin,age,health,val) values(@id,@pid,@Ngame,@Ngoal,@Nwin,@age,@health,@val)");
+            SqlCommand insert = new SqlCommand("insert into Doctor(id,pid,major) values(@id,@pid,@major)");
             insert.Parameters.AddWithValue("@id", this.id);
             insert.Parameters.AddWithValue("@pid", this.pid);
-            insert.Parameters.AddWithValue("@Ngame", this.Ngame);
-            insert.Parameters.AddWithValue("@Ngoal", this.Ngoal);
-            insert.Parameters.AddWithValue("@Nwin", this.Nwin);
-            insert.Parameters.AddWithValue("@age", this.age);
-            insert.Parameters.AddWithValue("@health", this.health);
-            insert.Parameters.AddWithValue("@val", this.val);
+            insert.Parameters.AddWithValue("@major", this.major);
             int success = dbaccess.executeQuery(insert);
             if (success == 1)
             {
@@ -76,15 +57,10 @@ namespace WpfApp1
         public new void update()
         {
             base.update();
-            SqlCommand insert = new SqlCommand("update player set id=@id,pid=@pid,Ngame=@Ngame,Ngoal=@Ngoal,Nwin=@Nwin,age=@age,health=@health,val=@val where id=@id");
+            SqlCommand insert = new SqlCommand("update Doctor set id=@id,pid=@pid,major=@major where id=@id");
             insert.Parameters.AddWithValue("@id", this.id);
             insert.Parameters.AddWithValue("@pid", this.pid);
-            insert.Parameters.AddWithValue("@Ngame", this.Ngame);
-            insert.Parameters.AddWithValue("@Ngoal", this.Ngoal);
-            insert.Parameters.AddWithValue("@Nwin", this.Nwin);
-            insert.Parameters.AddWithValue("@age", this.age);
-            insert.Parameters.AddWithValue("@health", this.health);
-            insert.Parameters.AddWithValue("@val", this.val);
+            insert.Parameters.AddWithValue("@major", this.major);
             int success = dbaccess.executeQuery(insert);
             if (success == 1)
             {
@@ -98,7 +74,7 @@ namespace WpfApp1
         public new void Delete()
         {
             base.Delete();
-            SqlCommand insert = new SqlCommand("DELETE FROM player where id=@id");
+            SqlCommand insert = new SqlCommand("DELETE FROM Doctor where id=@id");
             insert.Parameters.AddWithValue("@id", this.id);
             int success = dbaccess.executeQuery(insert);
             if (success == 1)
@@ -110,15 +86,15 @@ namespace WpfApp1
                 Console.WriteLine("it was not successfull");
             }
         }
-        public new static List<player> list()
+        public new static List<Doctor> list()
         {
-            List<player> LP = new List<player>();
-            string query = "SELECT * FROM player,employee where player.id=employee.id";
+            List<Doctor> LP = new List<Doctor>();
+            string query = "SELECT * FROM Doctor,employee where Doctor.id=employee.id";
             DataTable ans = new DataTable();
             dbaccess.readDatathroughAdapter(query, ans);
             foreach (DataRow dataRow in ans.Rows)
             {
-                player emp = new player();
+                Doctor emp = new Doctor();
                 emp.firstname = dataRow["firstname"].ToString();
                 emp.lastname = dataRow["lastname"].ToString();
                 emp.email = dataRow["email"].ToString();
@@ -130,12 +106,7 @@ namespace WpfApp1
                 emp.payment = Convert.ToInt32(dataRow["payment"].ToString());
                 emp.phone = dataRow["phone"].ToString();
                 emp.pid = Convert.ToInt32(dataRow["PID"].ToString());
-                emp.Ngame = Convert.ToInt32(dataRow["Ngame"].ToString());
-                emp.Ngoal = Convert.ToInt32(dataRow["Ngoal"].ToString());
-                emp.Nwin = Convert.ToInt32(dataRow["Nwin"].ToString());
-                emp.age = Convert.ToInt32(dataRow["age"].ToString());
-                emp.health = Convert.ToInt32(dataRow["health"].ToString());
-                emp.val = Convert.ToInt32(dataRow["val"].ToString());
+                emp.major = dataRow["major"].ToString();
                 LP.Add(emp);
                 //foreach (var item in dataRow.ItemArray)
                 //Console.WriteLine(item);
@@ -150,35 +121,36 @@ namespace WpfApp1
         }
         public new static void test()
         {
-            player emp = new player(0, 0, "player", "mohammad0", "shahidzade", "mohamm@", "0", "0912", 5, 10,0,0,0,0,0,0);
-            player emp1 = new player(1, 1, "manage", "mohammad1", "shahidzade", "mohamm@", "0", "0912", 5, 10, 0, 0, 0, 0, 0, 0);
-            player emp2 = new player(2, 2, "coach", "mohammad2", "shahidzade", "mohamm@", "0", "0912", 5, 10, 0, 0, 0, 0, 0, 0);
-            player emp3 = new player(3, 3, "Doctor", "mohammad3", "shahidzade", "mohamm@", "0", "0912", 5, 10, 0, 0, 0, 0, 0, 0);
+            Doctor emp = new Doctor(0, 0, "Doctor", "mohammad0", "shahidzade", "mohamm@", "0", "0912", 5, 10, "leg");
+            Doctor emp1 = new Doctor(1, 1, "manage", "mohammad1", "shahidzade", "mohamm@", "0", "0912", 5, 10, "hart");
+            Doctor emp2 = new Doctor(2, 2, "Doctor", "mohammad2", "shahidzade", "mohamm@", "0", "0912", 5, 10, "hamestring");
+            Doctor emp3 = new Doctor(3, 3, "Doctor", "mohammad3", "shahidzade", "mohamm@", "0", "0912", 5, 10, "head");
             emp.insert();
             emp1.insert();
             emp2.insert();
             emp3.insert();
             Console.WriteLine("first line");
-            List<player> LP = new List<player>();
-            LP = player.list();
-            foreach (player emplo in LP)
+            List<Doctor> LP = new List<Doctor>();
+            LP = Doctor.list();
+            foreach (Doctor emplo in LP)
             {
-                Console.WriteLine(emplo.firstname);
+                Console.WriteLine("{0},{1}",emplo.firstname,emplo.major);
             }
             emp.firstname = "ali";
+            emp.major = "koft";
             emp.update();
-            LP = player.list();
+            LP = Doctor.list();
             Console.WriteLine("second line");
-            foreach (player emplo in LP)
+            foreach (Doctor emplo in LP)
             {
-                Console.WriteLine(emplo.firstname);
+                Console.WriteLine("{0},{1}", emplo.firstname, emplo.major);
             }
             emp1.Delete();
-            LP = player.list();
+            LP = Doctor.list();
             Console.WriteLine("third line");
-            foreach (player emplo in LP)
+            foreach (Doctor emplo in LP)
             {
-                Console.WriteLine(emplo.firstname);
+                Console.WriteLine("{0},{1}", emplo.firstname, emplo.major);
             }
         }
     }

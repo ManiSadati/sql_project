@@ -25,26 +25,41 @@ worktime int null,
 payment int null,
 );
 
-DROP TABLE employee;
+
+CREATE TABLE coach
+(
+ID int not null primary key,
+PID int not null,
+Ngame int not null,
+Ngoal int not null,
+Nwin int not null,
+Val int not null,
+);
+
+
+CREATE TABLE doctor
+(
+ID int not null primary key,
+PID int not null,
+major varchar(800) not null,
+);
+
 
 CREATE TABLE player
 (
-ID int identity(1,1) not null primary key,
-PID int foreign key,
-Ctype varchar(800) null,
-Ngame varchar(800) not null,
-Ngoal varchar(800) not null,
-HP varchar(800) not null,
-Val varchar(800) not null,
+ID int not null primary key,
+PID int not null,
+Ngame int not null,
+Ngoal int not null,
+Nwin int not null,
+age int not null,
+health int not null,
+val  int not null,
 );
 
-CREATE TABLE customer
-(
-ID int identity(1,1) not null primary key,
-NationalID varchar(100) not null,
-Address varchar(800) not null,
-Name varchar(800) not null,
-Credit int not null
-);
+DROP TABLE employee;
+DROP TABLE player;
+DROP TABLE coach;
+DROP TABLE doctor;
 
 DROP TABLE SIGNUP;
