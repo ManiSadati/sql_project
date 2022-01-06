@@ -1,20 +1,9 @@
 CREATE DATABASE Dbproject;
 USE Dbproject;
 
-CREATE TABLE SIGNUP
-(
-ID int identity(1,1) not null primary key,
-firstname varchar(800) not null,
-secondname varchar(800) not null,
-email varchar(800) not null,
-pass varchar(800) not null,
-phone varchar(800) not null
-);
-
 CREATE TABLE employee
 (
-ID int not null primary key,
-CID int not null,
+ID varchar(800) not null primary key,
 Ctype varchar(800) null,
 firstname varchar(800) not null,
 lastname varchar(800) not null,
@@ -28,8 +17,7 @@ payment int null,
 
 CREATE TABLE coach
 (
-ID int not null primary key,
-PID int not null,
+ID varchar(800) not null primary key,
 Ngame int not null,
 Ngoal int not null,
 Nwin int not null,
@@ -38,15 +26,14 @@ Val int not null,
 
 CREATE TABLE doctor
 (
-ID int not null primary key,
-PID int not null,
+ID varchar(800) not null primary key,
 major varchar(800) not null,
 );
 
 
 CREATE TABLE customer
 (
-ID int not null primary key,
+ID varchar(800) not null primary key,
 dname varchar(800) not null,
 email varchar(800) not null,
 pass varchar(800) not null,
@@ -57,8 +44,7 @@ Credit int not null,
 
 CREATE TABLE player
 (
-ID int not null primary key,
-PID int not null,
+ID varchar(800) not null primary key,
 Ngame int not null,
 Ngoal int not null,
 Nwin int not null,
@@ -80,7 +66,7 @@ season varchar(800) not null,
 
 CREATE TABLE product
 (
-ID int not null primary key,
+ID varchar(800) not null primary key,
 price int not null,
 dname varchar(800) not null,
 size int not null,
@@ -100,7 +86,7 @@ tourid int not null FOREIGN KEY REFERENCES tournament(ID),
 
 CREATE TABLE play
 (
-playerid int not null FOREIGN KEY REFERENCES player(ID),
+playerid varchar(800) not null FOREIGN KEY REFERENCES player(ID),
 gameid varchar(800) not null FOREIGN KEY REFERENCES game(date_time),
 ngoal int not null,
 tplayed int not null,
@@ -113,7 +99,7 @@ sscore int not null,
 
 CREATE TABLE participate
 (
-gameid int not null primary key,
+gameid varchar(800) not null primary key,
 nrgoal int not null,
 nsgoal int not null,
 ncpass int not null,
