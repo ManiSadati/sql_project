@@ -44,15 +44,14 @@ major varchar(800) not null,
 );
 
 
-CREATE TABLE Customer
+CREATE TABLE customer
 (
-ID int identity(1,1) not null primary key,
-Name varchar(800) not null,
-NID varchar(100) not null,
+ID int not null primary key,
+dname varchar(800) not null,
 email varchar(800) not null,
-password varchar(800) not null,
-Address varchar(800) not null,
-Credit int not null
+pass varchar(800) not null,
+addres varchar(800) not null,
+Credit int not null,
 );
 
 
@@ -70,12 +69,13 @@ val  int not null,
 
 CREATE TABLE tournament
 (
-ID int not null primary key,
+ID int identity(1,1) not null primary key,
 dname varchar(800) not null,
 wteam varchar(800) not null,
 drank int not null,
 prise varchar(800) not null,
 point int not null,
+season varchar(800) not null,
 );
 
 CREATE TABLE product
@@ -85,17 +85,30 @@ price int not null,
 dname varchar(800) not null,
 size int not null,
 remain int not null,
+date_time varchar(800) not null,
+);
+
+CREATE TABLE game
+(
+date_time varchar(800) not null primary key,
+wteam varchar(800) not null,
+referee varchar(800) not null,
+nfans int not null,
+opponent varchar(800) not null,
+tourid int not null FOREIGN KEY REFERENCES tournament(ID),
 );
 
 CREATE TABLE play
 (
-playerid int not null,
-gameid int not null,
+playerid int not null FOREIGN KEY REFERENCES player(ID),
+gameid varchar(800) not null FOREIGN KEY REFERENCES game(date_time),
 ngoal int not null,
 tplayed int not null,
 npass int not null,
 grade int not null,
 ncpass int not null,
+nscore int not null,
+sscore int not null,
 );
 
 CREATE TABLE participate
@@ -116,14 +129,6 @@ experience varchar(800) not null,
 task varchar(800) not null,
 );
 
-CREATE TABLE game
-(
-ID int not null primary key,
-wteam varchar(800) not null,
-referee varchar(800) not null,
-nfans int not null,
-opponent varchar(800) not null,
-);
 
 CREATE TABLE club
 (
