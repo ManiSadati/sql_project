@@ -1,5 +1,7 @@
-CREATE DATABASE Dbproject;
-USE Dbproject;
+CREATE DATABASE Databaseproject;
+USE Databaseproject;
+
+select * from manager
 
 CREATE TABLE employee
 (

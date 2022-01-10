@@ -16,8 +16,9 @@ namespace WpfApp1
         private static SqlDataAdapter adapter = new SqlDataAdapter();
         public SqlTransaction DbTran;
 
-        private static string strConnString = "Data Source=M-SH\\MOHAMMADSH;Initial Catalog=Dbproject;Integrated Security=True";
-
+        private static string strConnString = "Data Source=VIDA\\MANI;Initial Catalog=TestDbproject;Integrated Security=True";
+        //"Data Source=M-SH\\MOHAMMADSH;Initial Catalog=Dbproject;Integrated Security=True";
+        //"Data Source=VIDA\\MANI;Initial Catalog=Dbproject;Integrated Security=True";
 
 
         public void createConn()

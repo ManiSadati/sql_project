@@ -27,6 +27,9 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            this.Hide();
+            CostumerSignUp x = new CostumerSignUp();
+            x.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
